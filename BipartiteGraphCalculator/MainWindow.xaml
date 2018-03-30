@@ -5,8 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BipartiteGraphCalculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Bipartite Graph Calculator" SizeToContent="WidthAndHeight"
+        MaxHeight="400" MaxWidth="600" 
+        ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="GenericButton">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Left" Width="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="OutputLabel" Content="0" Grid.ColumnSpan="2" Grid.Row="0" 
+               VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+               Margin="8,8,8,8" HorizontalContentAlignment="Right"
+               BorderBrush="Black" BorderThickness="2" FontSize="24"/>
+
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="1" 
+                    HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Button x:Name="AddLeftButton"  Content="Add Left Vertex" 
+                    Style="{StaticResource GenericButton}" VerticalAlignment="Center"
+                    Margin="8"  Click="AddLeftButton_Click"/>
+            <Button x:Name="AddRightButton" Content="Add Right Vertex" 
+                    Style="{StaticResource GenericButton}" VerticalAlignment="Center" 
+                    Margin="8" Click="AddRightButton_Click"/>
+            <Button x:Name="AddEdgeButton" Content="Add Edge" 
+                    Style="{StaticResource GenericButton}" VerticalAlignment="Center" 
+                    Margin="8,8,4,8" Click="AddEdgeButton_Click"/>
+            <TextBox x:Name="LeftEndText" Margin="8,8,0,8" MinWidth="25" 
+                    VerticalAlignment="Center"/>
+            <Label Margin="2,8">to</Label>
+            <TextBox x:Name="RightEndText" Margin="0,8,8,8" MinWidth="25" 
+                     VerticalAlignment="Center"/>
+            <Button x:Name="ResetButton" Content="Reset Button" 
+                    Style="{StaticResource GenericButton}" VerticalAlignment="Center" 
+                    Margin="8" Click="ResetButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" 
+                    VerticalAlignment="Top">
+            <Button x:Name="TotalVerticesButton" Content="Total Vertices" 
+                    Style="{StaticResource GenericButton}" Margin="8" 
+                    Click="TotalVerticesButton_Click"/>
+            <Button x:Name="LeftVerticesButton" Content="Left Vertices" 
+                    Style="{StaticResource GenericButton}" Margin="8" 
+                    Click="LeftVerticesButton_Click"/>
+            <Button x:Name="RightVerticesButton" Content="Right Vertices" 
+                    Style="{StaticResource GenericButton}" Margin="8" 
+                    Click="RightVerticesButton_Click"/>
+            <Button x:Name="TotalEdgesButton" Content="Total Edges" 
+                    Style="{StaticResource GenericButton}" Margin="8" 
+                    Click="TotalEdgesButton_Click"/>
+            <Button x:Name="ComponentsButton" Content="Components" 
+                    Style="{StaticResource GenericButton}" Margin="8" 
+                    Click="ComponentsButton_Click"/>
+        </StackPanel>
+
+        <Canvas x:Name="GraphDrawing" Grid.Column="1" Grid.Row="2" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
     </Grid>
 </Window>
